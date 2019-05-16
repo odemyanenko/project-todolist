@@ -9,8 +9,6 @@ app.use(express.static('public'));
 
 const path = __dirname + '/views/';
 
-const customers = [];
-
 router.use(function (req, res, next) {
     console.log("/" + req.method);
     next();
