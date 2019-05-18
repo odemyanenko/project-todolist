@@ -1,6 +1,9 @@
+path = require('path');
+
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
 exports.note_create_get = function (req, res) {
-    res.send('NOT IMPLEMENTED: Note create GET');
+    res.sendFile(path.join(__dirname, '../views/index.html'));
+    //res.send('NOT IMPLEMENTED: Note create GET');
 };
 
 //Роут GET /notes/${id}, который будет отдавать HTML страницу детального отображения заметки.
@@ -15,10 +18,10 @@ exports.note_create_post = function (req, res) {
 
 //Роут PUT /api/notes/${id} для редактирования заметки.
 exports.note_update_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Note update POST: ' + req.params.id);
+    res.send('NOT IMPLEMENTED: Note update PUT: ' + req.params.id);
 };
 
 //    Роут DELETE /api/notes/${id} для удаления заметки.
 exports.note_delete_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Note delete POST ' + req.params.id);
+    res.send('NOT IMPLEMENTED: Note delete DELETE ' + req.params.id);
 };
