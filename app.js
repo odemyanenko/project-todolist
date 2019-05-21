@@ -3,7 +3,10 @@ const app = express();
 const router = express.Router();
 const db = require('./db/db');
 
-const notes_controller = require('./controllers/notesController');
+const indexRouter = require('./routes/index');
+const notesRouter = require('./routes/notes');
+const listsRouter = require('./routes/lists');
+const apiRouter = require('./routes/api');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -11,32 +14,28 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 
-const path = __dirname + '/views/';
-
-router.use(function (req, res, next) {
-    console.log("/" + req.method);
-    next();
-});
-
-app.get("/", function (req, res) {
-    res.sendFile(path + "index.html");
-});
-
+// const path = __dirname + '/views/';
 //
-app.get("/notes", notes_controller.note_create_get);
-app.get('/notes/:id', notes_controller.note_detail);
-app.post('/api/notes', notes_controller.note_create_post);
-app.put('/api/notes/:id', notes_controller.note_update_post);
-app.delete('/api/notes/:id', notes_controller.note_delete_post);
+// router.use(function (req, res, next) {
+//     console.log("/" + req.method);
+//     console.log("path:" + path);
+//     next();
+// });
 //
+// app.get("/", function (req, res) {
+//     console.log("path:" + path);
+//     res.sendFile(path + "index.html");
+// });
 
-app.use("/", router);
+// app.use("/", router);
 
-// const notesRouter = require('./routes/notes');
-// app.use("/notes", notesRouter);
+app.use("/", indexRouter);
+app.use("/notes", notesRouter);
+app.use("/lists", listsRouter);
+app.use("/api", apiRouter);
 
 app.use("*", function (req, res) {
-    res.sendFile(path + "404.html");
+    res.sendFile(__dirname + "/views/404.html");
 });
 
 
