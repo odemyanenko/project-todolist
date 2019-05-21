@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
+const db = require('./db/db');
 
 const notes_controller = require('./controllers/notesController');
 
@@ -38,6 +39,18 @@ app.use("*", function (req, res) {
     res.sendFile(path + "404.html");
 });
 
+// db.connect('"mongodb+srv://testUser:7791OlegHome!!@testcluster-8zmxo.mongodb.net/test?retryWrites=true"', function (err) {
+//     if (err) {
+//         return console.log(err);
+//     }
+//     app.listen(3000, function () {
+//         console.log('Example app listening on port 3000!')
+//     });
+// })
+
+//db.testConnection();
+// db.connect();
+//
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 });
