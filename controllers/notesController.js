@@ -1,3 +1,5 @@
+const Notes = require('../models/notes');
+
 path = require('path');
 
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
