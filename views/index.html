@@ -8,9 +8,54 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/script.js"></script>
+    <style>
+        .note-editor{
+            width: 100%;
+            max-width: 600px;
+            padding: 16px;
+            margin: 16px auto;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            width: 100%;
+            resize: none;
+            margin: 5px;
+            font-size: 14px;
+            border: none;
+            font-weight: 300;
+        }
+        .title:focus{
+            outline: 0;
+        }
+        .text{
+            font-size: 14px;
+            width: 100%;
+            resize: none;
+            margin: 5px;
+            border: none;
+            font-weight: 500;
+        }
+        .text:focus{
+            outline: 0;
+        }
+        .button{
+
+        }
+    </style>
 </head>
 
 <body>
     <h1>Hello To Do List</h1>
+<div class="container">
+    <form class="note-editor" action="note.html">
+        <input class="title" type="text" placeholder="Enter title">
+        <textarea class="text" name="" id="" cols="30" rows="10" placeholder="Enter note text"></textarea>
+        <button class="button btn btn-success" type="submit">ADD</button>
+    </form>
+</div>
 </body>
 </html>
