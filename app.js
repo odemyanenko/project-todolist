@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const db = require('./db/db');
+const path = require('path');
 
 const indexRouter = require('./routes/index');
 const notesRouter = require('./routes/notes');
@@ -11,10 +12,13 @@ const pnfRouter = require('./routes/404');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.set('view engine', 'ejs');
+app.set('view', 'view');
+
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.use("/", indexRouter);
 app.use("/notes", notesRouter);

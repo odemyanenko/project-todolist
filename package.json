@@ -4,6 +4,7 @@
   "description": "Create TO-DO List application use NodeJS with JQuery Ajax Post/Get requests and Bootstrap view",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,5 +21,8 @@
     "express": "^4.16.4",
     "mongodb": "^3.2.5",
     "mongoose": "^5.5.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }

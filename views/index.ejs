@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>ToDo List</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/list.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -45,9 +45,13 @@
     </div>
 </header>
 
-<div class="jumbotron text-center">
-    <h1>404 Error!</h1>
-    <p>PAGE NOT FOUND</p>
-</div>
+<main>
+    <form class="note-editor" action="/lists">
+        <input class="title" id="title" type="text" placeholder="Enter title">
+        <textarea class="text" name="" id="text" cols="30" rows="10" placeholder="Enter note text"></textarea>
+        <button class="button btn btn-success" type="submit">ADD</button>
+    </form>
+</main>
+<!--<script src="/js/script.js"></script>-->
 </body>
 </html>
