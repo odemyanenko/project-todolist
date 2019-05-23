@@ -1,6 +1,6 @@
 const Notes = require('../models/notes');
 const Items = require('../models/items');
-
+const note = [];
 //Роут GET /lists, который будет отдавать HTML страницу с формой создания списка.
 exports.list_create_get = function (req, res) {
     res.sendFile(path.join(__dirname, '../views/note.html'));
@@ -18,6 +18,7 @@ exports.list_detail = function (req, res) {
 
 //Роут POST /api/lists для добавления нового списка задач с учетом того, что количество позиций в списке - не ограничено и заранее не известно.
 exports.list_create_post = function (req, res) {
+    note.push({title:req.body.title});
     res.send('NOT IMPLEMENTED: List create POST');
 };
 
