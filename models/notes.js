@@ -11,17 +11,23 @@ const NotesSchema = new mongoose.Schema({
         enum: ['List', 'Note']
     },
     description: String,
+    items: [{
+        text: {
+            type: String,
+            required: true
+        },
+        completed: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        completed_at: {type: Date}
+    }],
     color: {
         type: Number,
         required: true,
         default: 0
     },
-    iscompleted: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
-    completed_at: {type: Date},
     status: {
         type: String,
         required: true,
@@ -36,5 +42,11 @@ const NotesSchema = new mongoose.Schema({
     updated_at: {type: Date},
     url: {type: String}
 }, {collection: 'notes'});
+
+// NotesSchema
+//     .virtual('url')
+//     .get(function () {
+//         return '/notes/' + this._id;
+//     });
 
 module.exports = mongoose.model('Notes', NotesSchema);

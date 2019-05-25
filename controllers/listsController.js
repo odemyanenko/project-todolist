@@ -1,6 +1,5 @@
 const Notes = require('../models/notes');
-const Items = require('../models/items');
-const note = [];
+
 //Роут GET /lists, который будет отдавать HTML страницу с формой создания списка.
 exports.list_create_get = function (req, res) {
     res.render('note', {});
