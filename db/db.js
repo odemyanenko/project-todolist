@@ -9,7 +9,16 @@ function connect() {
             .catch((err) => console.error(err))
     })
 }
-
+/*
+// Connecting to the database
+mongoose.connect(dbConfig.url)
+.then(() => {
+    console.log("Successfully connected to MongoDB.");
+}).catch(err => {
+    console.log('Could not connect to MongoDB.');
+    process.exit();
+});
+* */
 module.exports = {
     connect
 }
