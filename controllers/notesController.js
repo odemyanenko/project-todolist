@@ -5,7 +5,7 @@ path = require('path');
 
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
 exports.note_create_get = function (req, res) {
-    res.render('index', {});
+    res.render('index', { "name": "Vasia Pupkin", "surname": "Sidorovich" });
 };
 
 //Роут GET /notes/${id}, который будет отдавать HTML страницу детального отображения заметки.

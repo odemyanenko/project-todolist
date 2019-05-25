@@ -4,7 +4,7 @@ const router = express.Router();
 path = require('path');
 
 router.use("*", function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/404.html'));
+    res.render('404', {});
 });
 
 module.exports = router;
