@@ -3,7 +3,7 @@ const Items = require('../models/items');
 const note = [];
 //Роут GET /lists, который будет отдавать HTML страницу с формой создания списка.
 exports.list_create_get = function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/note.html'));
+    res.render('note', {});
 };
 
 //Роут GET /lists/${id}, который будет отдавать HTML страницу детального отображения списка.
