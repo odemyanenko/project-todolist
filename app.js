@@ -13,12 +13,23 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
-app.set('view', 'view');
+app.set('view engine', 'pug');
+app.set('views', './views/templates');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'));
+
+const testpugObject = {
+    name: 'Vasia',
+    surname: 'Pupkin2',
+    message: 'note1'
+};
+
+app.get('/pug', function(req, res) {
+    res.render('testpug', testpugObject);
+});
 
 app.use("/", indexRouter);
 app.use("/notes", notesRouter);
