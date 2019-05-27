@@ -4,35 +4,65 @@ path = require('path');
 
 
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
-exports.note_create_get = function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/addNotes.html'));
-//    res.render('addNotes');
+exports.note_create_get = (req, res, next) => {
+    res.render('addnote', {
+        pageTitle: 'Add Note',
+        path: '/api/notes',
+        addNoteCSS: true,
+        listNoteCSS: true
+    });
 };
+
 
 //Роут GET /notes/${id}, который будет отдавать HTML страницу детального отображения заметки.
-exports.note_detail = function (req, res) {
-    Notes.findById(req.params.id, function (err, item) {
-        if (err) return next(err);
-        res.send(item);
-        // res.sendFile(path.join(__dirname, '../views/index.html'));
-    });
-};
+exports.note_detail = (req, res, next)=>{
+    //const notId = req.params.noteId;
+    Notes.findById(req.params.id)
+        .then(note=>{
+            res.render('note_detail', {
+                note: note,
+                pageTitle: note.title,
+                path:'/notes'
+            });
+        })
+        .catch(err=>console.log(err));
+}
 
 // Роут POST /api/notes для создания заметки.
-exports.note_create_post = function (req, res) {
-    const notes = new Notes({
-        title: "Notes 4",//req.body.title,
-        type: 'List',
-        description: "Description 4",//req.body.description,
+// exports.note_create_post = function (req, res) {
+//     const notes = new Notes({
+//         title: req.body.title,
+//         type: 'Note',
+//         description: req.body.description,
+//         color: 0
+//     });
+//     notes.save()
+//         .then(item => {
+//             console.log('created note');
+//             res.redirect("/");
+//         })
+//         .catch(err => {
+//             console.error(err)
+//         });
+// };
+
+
+exports.note_create_post = (req, res, next) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    const note = new Notes({
+        title: title,
+        type: 'Note',
+        description: description,
         color: 0
     });
-    notes.save()
-        .then(item => {
-            console.log(item);
-            res.redirect("/");
+    note.save()
+        .then(result => {
+            console.log('created note');
+            res.redirect('/');
         })
         .catch(err => {
-            console.error(err)
+            console.log(err);
         });
 };
 
@@ -57,12 +87,11 @@ exports.note_update_post = function (req, res) {
 };
 
 //    Роут DELETE /api/notes/${id} для удаления заметки.
-exports.note_delete_post = function (req, res) {
-    // Notes.deleteOne({ _id: req.params.id });
-    // console.log(result);
-
-    Notes.findByIdAndRemove(req.params.id, (err, item) => {
-        if (err) return res.status(500).send(err);
-        return res.status(200).redirect("/");
-    });
+exports.note_delete_post = (req, res, next) => {
+    Notes.findOneAndDelete(req.params.id)
+        .then(() => {
+            console.log('Delete note');
+            res.redirect("/");
+        })
+        .catch(err => console.log(err));
 };

@@ -12,7 +12,7 @@ const pnfRouter = require('./routes/404');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', './views/templates');
 
 const mongoose = require('mongoose');

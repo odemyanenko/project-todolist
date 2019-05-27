@@ -1,4 +1,4 @@
 module.exports = {
-    uri: "mongodb+srv://Marina:nefkod-9sefQa-kusrap@clusternode-ssn1c.mongodb.net",
-    dbName: "todolist"
+    uri: 'mongodb+srv://TODOuser:todouser_fs7@testcluster-8zmxo.mongodb.net/TODOlist?retryWrites=true',
+    dbName: "TODOlist"
 }

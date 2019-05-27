@@ -1,0 +1,15 @@
+<%- include('../templates/includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/addNote.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+<body>
+<%- include('../templates/includes/nav.ejs') %>
+<main>
+    <form class="note-editor" action="api/notes" method="POST">
+        <input name="title" class="title" type="text" id="title" placeholder="Enter title">
+        <textarea name="description" class="text" id="description" cols="30" rows="10" placeholder="Enter note text"></textarea>
+        <button class="button btn btn-success" type="submit">Add As Note</button>
+        <a href="/addList/add-list">Add As List</a>
+    </form>
+</main>
+<%- include('../templates/includes/end.ejs') %>

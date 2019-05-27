@@ -3,17 +3,24 @@ const Notes = require('../models/notes');
 path = require('path');
 
 //Роут GET /, который будет возвращать главную HTML страницу со всеми заметками.
-exports.notes_all_get = function (req, res) {
-    Notes.find(function (err, notes) {
-        if (err) return next(err);
-        //res.send(notes);
-        res.render('index', { "name": "Vasia Pupkin", "surname": "Sidorovich" });
-        //res.sendFile(path.join(__dirname, '../views/index.html'));
-    });
-    // Notes.find({},{},function(err, notes){
-    // if (err) return next(err);
-    //     res.render('index', {
-    //         "notes" : notes
-    //     });
-    // });
+exports.notes_all_get = (req, res, next) => {
+    Notes.find()
+        .then(notes => {
+            // console.log(notes);
+            res.render('index', {
+                notes_list: notes,
+                pageTitle: 'ListNote',
+                path: '/',
+                hasNotes: notes.length > 0,
+                activeListNode: true,
+                listNoteCSS: true
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };
+
+exports.get404 = (req, res, next) => {
+    res.status(404).render('404', {pageTitle: 'Page not found', path: '/404'});
+}

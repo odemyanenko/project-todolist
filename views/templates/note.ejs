@@ -1,0 +1,26 @@
+<%- include('../templates/includes/head.ejs') %>
+<link rel="stylesheet" href="/css/listNote.css">
+</head>
+<body>
+
+<%- include('../templates/includes/nav.ejs') %>
+
+<main class="centered">
+
+        <h1 class="title">
+            <%= note.title %>
+        </h1>
+<hr/>
+        <div class="text">
+            <%= note.description %>
+        </div>
+        <div class="note-box_actions">
+            <form action="/" method="POST">
+                <input type="hidden" value="<%= note._id %>" name="noteId"/>
+                <button class="del-icon" type="submit">x</button>
+            </form>
+        </div>
+
+</main>
+
+<%- include('../templates/includes/end.ejs') %>

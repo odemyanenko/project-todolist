@@ -7,7 +7,7 @@ const lists_controller = require('../controllers/listsController');
 //notes
 router.post('/notes', notes_controller.note_create_post);
 router.put('/notes/:id', notes_controller.note_update_post);
-router.delete('/notes/:id', notes_controller.note_delete_post);
+router.post('/notes/:id', notes_controller.note_delete_post);
 
 //lists
 router.get('/lists/:id', lists_controller.list_display);

@@ -8,7 +8,6 @@
     padding: 5px;
     margin-bottom: 10px;
     transition: box-shadow .3s;
-    white-space: pre-wrap;
     word-wrap: break-word;
 }
 .note-box:hover{

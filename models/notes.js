@@ -39,14 +39,13 @@ const NotesSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
-    updated_at: {type: Date},
-    url: {type: String}
+    updated_at: {type: Date}
 }, {collection: 'notes'});
 
-// NotesSchema
-//     .virtual('url')
-//     .get(function () {
-//         return '/notes/' + this._id;
-//     });
+NotesSchema.methods = {
+    url: function() {
+        return  '/notes/' + this._id
+    }
+}
 
 module.exports = mongoose.model('Notes', NotesSchema);
