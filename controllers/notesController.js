@@ -5,9 +5,10 @@ path = require('path');
 
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
 exports.note_create_get = (req, res, next) => {
+    console.log('get addnote');
     res.render('addnote', {
         pageTitle: 'Add Note',
-        path: '/api/notes',
+        path: 'api/notes',
         addNoteCSS: true,
         listNoteCSS: true
     });
@@ -50,12 +51,14 @@ exports.note_detail = (req, res, next)=>{
 exports.note_create_post = (req, res, next) => {
     const title = req.body.title;
     const description = req.body.description;
+    console.log(req.body);
     const note = new Notes({
         title: title,
-        type: 'Note',
+        type: "Note",
         description: description,
         color: 0
     });
+    console.log(note);
     note.save()
         .then(result => {
             console.log('created note');

@@ -5,8 +5,8 @@
 <body>
 <%- include('../templates/includes/nav.ejs') %>
 <main>
-    <form class="note-editor" action="/addList/add-list" method="POST">
-        <a href="/addNote/add-note"><i class="fa fa-shopping-cart"></i></a>
+    <form class="note-editor" action="/api/lists" method="POST">
+        <a href="/notes"><i class="fa fa-shopping-cart"></i></a>
         <input name="title" class="title" type="text" id="title" placeholder="Enter title">
         <button class="button btn btn-warning" type="submit">Add As List</button>
         <ul>

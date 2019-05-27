@@ -3,7 +3,26 @@ const Notes = require('../models/notes');
 //Роут GET /lists, который будет отдавать HTML страницу с формой создания списка.
 exports.list_create_get = function (req, res) {
     res.render('note', {});
+
 };
+
+exports.list_create_get = (req, res, next)=>{
+    Notes.find()
+        .then(listNote=>{
+            res.render('addlist', {
+                notes_list: listNote,
+                pageTitle: 'ListNote',
+                path: '/',
+                hasNotes: listNote.length > 0,
+                activeListNode: true,
+                listNoteCSS: true
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+};
+
 
 //Роут GET /lists/${id}, который будет отдавать HTML страницу детального отображения списка.
 exports.list_display = function (req, res) {
