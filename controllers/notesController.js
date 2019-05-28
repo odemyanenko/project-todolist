@@ -2,7 +2,6 @@ const Notes = require('../models/notes');
 
 path = require('path');
 
-
 //Роут GET /notes, который будет отдавать HTML страницу с формой создания заметки.
 exports.note_create_get = (req, res, next) => {
     console.log('get addnote');
@@ -14,48 +13,25 @@ exports.note_create_get = (req, res, next) => {
     });
 };
 
-
 //Роут GET /notes/${id}, который будет отдавать HTML страницу детального отображения заметки.
-exports.note_detail = (req, res, next)=>{
-    //const notId = req.params.noteId;
+exports.note_detail = (req, res, next) => {
     Notes.findById(req.params.id)
-        .then(note=>{
+        .then(note => {
             res.render('note_detail', {
                 note: note,
                 pageTitle: note.title,
-                path:'/notes'
+                path: '/notes'
             });
         })
-        .catch(err=>console.log(err));
+        .catch(err => console.log(err));
 }
 
 // Роут POST /api/notes для создания заметки.
-// exports.note_create_post = function (req, res) {
-//     const notes = new Notes({
-//         title: req.body.title,
-//         type: 'Note',
-//         description: req.body.description,
-//         color: 0
-//     });
-//     notes.save()
-//         .then(item => {
-//             console.log('created note');
-//             res.redirect("/");
-//         })
-//         .catch(err => {
-//             console.error(err)
-//         });
-// };
-
-
 exports.note_create_post = (req, res, next) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    console.log(req.body);
     const note = new Notes({
-        title: title,
+        title: req.body.title,
         type: "Note",
-        description: description,
+        description: req.body.description,
         color: 0
     });
     console.log(note);

@@ -6,8 +6,8 @@
 <%- include('../templates/includes/nav.ejs') %>
 <main>
     <form class="note-editor" action="api/notes" method="POST">
-        <input name="title" class="title" type="text" id="title" placeholder="Enter title">
-        <textarea name="description" class="text" id="description" cols="30" rows="10" placeholder="Enter note text"></textarea>
+        <input name="title" class="title" type="text" placeholder="Enter title">
+        <textarea name="description" class="text" cols="30" rows="10" placeholder="Enter note text"></textarea>
         <button class="button btn btn-success" type="submit">Add As Note</button>
         <a href="/lists">Add As List</a>
     </form>

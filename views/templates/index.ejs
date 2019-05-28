@@ -6,9 +6,9 @@
 <%- include('../templates/includes/nav.ejs') %>
 
 <main>
-    <% if (notes_list.length>0) { %>
+    <% if (notes_all.length>0) { %>
     <div class="grid">
-        <% for (let notes of notes_list) {%>
+        <% for (let notes of notes_all) {%>
                  <div class="note-box">
                      <h4 class="title"><%= notes.title %></h4>
                      <div class="text"><%= notes.description %></div>
@@ -29,11 +29,11 @@
 </main>
 
 <section>
-    <% if (notes_list.length>0) { %>
+    <% if (lists_all.length>0) { %>
     <div class="grid">
-        <% for (let listNote of notes_list) { %>
+        <% for (let list of lists_all) { %>
              <div class="note-box">
-               <h4 class="title"><%= listNote.title %></h4>
+               <h4 class="title"><%= list.title %></h4>
                <div class="note-box_actions">
                  <form action="/add-to-cart" method="POST">
                      <button class="del-icon">x</button>

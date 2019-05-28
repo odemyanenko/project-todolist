@@ -10,6 +10,10 @@ const apiRouter = require('./routes/api');
 const pnfRouter = require('./routes/404');
 
 const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
